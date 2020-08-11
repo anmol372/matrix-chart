@@ -1,0 +1,9 @@
+dependencies:
+- name: postgresql
+  repository: https://kubernetes-charts.storage.googleapis.com
+  version: 8.0.0
+- name: velero
+  repository: https://vmware-tanzu.github.io/helm-charts
+  version: 2.12.0
+digest: sha256:bb17a534964b13d92f3eac8026da6cc8d464eae91066e5e86d65975b6b72dec9
+generated: "2020-07-23T20:51:55.238521-04:00"

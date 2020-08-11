@@ -1,0 +1,9 @@
+{{- if .Release.IsInstall }}
+matrix-chart has been installed
+
+ - Synapse ({{ .Values.synapse.image.repository }})
+
+ {{- if .Values.postgresql.enabled }}
+ - PostgreSQL ({{ .Values.postgresql.image.repository }})
+{{- end }}
+{{- end }}

@@ -1,0 +1,21 @@
+{{- if and .Values.postgresql.enabled (not .Values.restore.enabled) }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "matrix.fullname" . }}-postgresql-initdb
+  labels:
+  {{ include "matrix.labels" . | nindent 4}}
+data:
+  postgresqlPassword: matrix
+  matrix.sql: |
+    CREATE USER {{ .Values.postgresql.username }}
+      LOGIN
+      ENCRYPTED PASSWORD '{{ .Values.postgresql.password }}';
+
+    CREATE DATABASE {{ .Values.postgresql.database }}
+      ENCODING 'UTF8'
+      LC_COLLATE='C'
+      LC_CTYPE='C'
+      template=template0
+      OWNER {{ .Values.postgresql.username }};
+{{- end }}
